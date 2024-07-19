@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn06r1wl1lmm"]
+
+[ext_resource type="Script" path="res://drawing.gd" id="1_361n2"]
+[ext_resource type="PackedScene" path="res://Scenes/tile_map.tscn" id="2_0h4kb"]
+[ext_resource type="PackedScene" path="res://Scenes/wire_area.tscn" id="3_vl8al"]
+
+[node name="Drawing" type="Node2D"]
+script = ExtResource("1_361n2")
+
+[node name="TileMap" parent="." instance=ExtResource("2_0h4kb")]
+z_index = -1
+position = Vector2(-11, -2)
+
+[node name="Start" parent="." instance=ExtResource("3_vl8al")]
+position = Vector2(845, 440)
+
+[node name="End" parent="." instance=ExtResource("3_vl8al")]
+position = Vector2(1114, 613)
+area_type = "END"
+
+[connection signal="mouse_clicked_in_area" from="Start" to="." method="_on_wire_area_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="Start" to="." method="_on_wire_area_mouse_in_area"]
+[connection signal="mouse_clicked_in_area" from="End" to="." method="_on_wire_area_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="End" to="." method="_on_wire_area_mouse_in_area"]
