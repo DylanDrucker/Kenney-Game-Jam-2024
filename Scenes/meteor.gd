@@ -13,7 +13,7 @@ func _ready():
 	height = get_viewport().get_visible_rect().size[1]
 	
 	var rng = RandomNumberGenerator.new()
-	var rand_x = rng.randf_range(0,width)
+	var rand_x = rng.randf_range(0,776)
 	rand_rotation_speed = rng.randf_range(-3,3)
 	rand_v_speed = rng.randf_range(50,200)
 	rand_h_speed = rng.randf_range(-50,50)

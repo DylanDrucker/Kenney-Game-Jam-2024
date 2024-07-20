@@ -11,7 +11,7 @@ func _ready():
 	var rng := RandomNumberGenerator.new()
 	var width = get_viewport().get_visible_rect().size[0]
 	height = get_viewport().get_visible_rect().size[1]
-	var rand_x = rng.randf_range(0,width)
+	var rand_x = rng.randf_range(0,776)
 	var rand_y = rng.randf_range(-50,-100)
 	var rand_z = rng.randf_range(0.5,1)
 	var rand_size = rng.randf_range(1,3)*rand_z

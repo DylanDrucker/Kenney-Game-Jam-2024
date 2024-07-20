@@ -21,7 +21,7 @@ func _process(delta):
 		emit_signal("shoot_enemy_laser", $LaserShoot.global_position)
 		laser_can_shoot = false
 		$ReloadTimer.start(reload_time)
-	if position.x > width - 50 or position.x < 50:
+	if position.x > 776 - 50 or position.x < 50:
 		horizontal *= -1
 
 func _on_reload_timer_timeout():
