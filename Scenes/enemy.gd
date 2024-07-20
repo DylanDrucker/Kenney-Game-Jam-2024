@@ -39,11 +39,11 @@ func lose_life():
 	reload_time *= 1.5
 	$ReloadTimer.start(reload_time)
 	if enemy_lives <= 0:
-		emit_signal("explosion",global_position)
+		emit_signal("explosion",global_position,Vector2(horizontal,1) * speed)
 		self.queue_free()
 		
 
 func hit_by_meteor():
-	emit_signal("explosion",global_position)
+	emit_signal("explosion",global_position,Vector2(horizontal,1) * speed)
 	self.queue_free()
 	return false

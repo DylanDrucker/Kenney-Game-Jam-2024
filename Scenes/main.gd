@@ -80,7 +80,8 @@ func _on_collision():
 func _on_laser_collision():
 	print("laser collided")
 
-func on_explosion(pos):
+func on_explosion(pos, velocity):
 	var explosion = explosion_scene.instantiate()
 	explosion.position = pos
+	explosion.velocity = velocity
 	$Explosions.add_child(explosion)

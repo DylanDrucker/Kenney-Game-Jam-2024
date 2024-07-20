@@ -4,6 +4,7 @@ var rotation_speed
 var lifetime
 var target_scale
 var target_rotation
+var velocity = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var rng = RandomNumberGenerator.new()
@@ -17,10 +18,12 @@ func _ready():
 	var tween = get_tree().create_tween().set_parallel(true)
 	tween.tween_property(self, "scale", target_scale, 0.3)
 	tween.tween_property(self,"rotation",target_rotation*(0.3/(0.3+lifetime)), 0.3)
+	tween.tween_property(self,"position",position+velocity*(0.3/(0.3+lifetime)), 0.3)
 	tween.chain()
 	tween.tween_property(self, "modulate", Color(0,0,0,0), lifetime)
 	tween.tween_property(self, "scale", Vector2(0.4,0.4), lifetime)
 	tween.tween_property(self,"rotation",target_rotation, lifetime)
+	tween.tween_property(self,"position",position+velocity*lifetime,lifetime)
 	tween.chain()
 	await get_tree().create_timer(1).timeout
 	self.queue_free
