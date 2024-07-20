@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ve7l5eqs0ngc"]
+
+[ext_resource type="Script" path="res://Scenes/big_star.gd" id="1_46xyv"]
+[ext_resource type="Texture2D" uid="uid://dq0s3k0rkvqod" path="res://Assets/Shooter/Effects/star1.png" id="1_s4wol"]
+
+[node name="BigStar" type="Sprite2D"]
+texture = ExtResource("1_s4wol")
+script = ExtResource("1_46xyv")
+
+[node name="TwinkleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="TwinkleTimer" to="." method="_on_twinkle_timer_timeout"]
