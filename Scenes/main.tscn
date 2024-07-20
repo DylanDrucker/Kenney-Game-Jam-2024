@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3xclijjut6oc"]
+[gd_scene load_steps=6 format=3 uid="uid://c3xclijjut6oc"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0fctq"]
 [ext_resource type="PackedScene" uid="uid://beiuin8lugews" path="res://Scenes/player.tscn" id="1_kohhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
-size = Vector2(238, 775)
+size = Vector2(236, 775)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svfhj"]
+size = Vector2(405, 803)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oc4rw"]
 size = Vector2(1439, 75)
@@ -27,8 +30,8 @@ shape = SubResource("RectangleShape2D_tjnu7")
 collision_layer = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RigidBody2D"]
-position = Vector2(1269, 310)
-shape = SubResource("RectangleShape2D_tjnu7")
+position = Vector2(979.5, 323.5)
+shape = SubResource("RectangleShape2D_svfhj")
 
 [node name="RigidBody2D3" type="StaticBody2D" parent="Borders"]
 collision_layer = 128
@@ -53,7 +56,7 @@ shape = SubResource("RectangleShape2D_oc4rw")
 [node name="Lasers" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_kohhl")]
-position = Vector2(574, 504)
+position = Vector2(285, 374)
 scale = Vector2(0.75, 0.75)
 
 [node name="Explosions" type="Node2D" parent="."]
