@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://poj2qwxjacqi"]
 
 [ext_resource type="Texture2D" uid="uid://17guuudm6f73" path="res://Assets/explosions/explosion00.png" id="1_gshv8"]
-[ext_resource type="Script" path="res://Explosion.gd" id="2_fnhp1"]
+[ext_resource type="Script" path="res://Scenes/Explosion.gd" id="2_fnhp1"]
 
 [node name="Explosion" type="Sprite2D"]
 scale = Vector2(0.25, 0.25)

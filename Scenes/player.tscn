@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://beiuin8lugews"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_6ymoc"]
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_6ymoc"]
 [ext_resource type="Texture2D" uid="uid://da1rwuomwhkhs" path="res://Assets/Shooter/Parts/engine2.png" id="2_n5sam"]
 [ext_resource type="Texture2D" uid="uid://bpok06kh82hkh" path="res://Assets/Shooter/Parts/gun10.png" id="3_1sxsr"]
 [ext_resource type="Texture2D" uid="uid://c72qrgda32dm6" path="res://Assets/Shooter/Parts/gun09.png" id="4_gfcnt"]
