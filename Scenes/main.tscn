@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3xclijjut6oc"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_0fctq"]
+[ext_resource type="PackedScene" uid="uid://beiuin8lugews" path="res://Scenes/player.tscn" id="1_kohhl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
+size = Vector2(238, 775)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc4rw"]
+size = Vector2(1439, 75)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_0fctq")
+
+[node name="BackgroundStars" type="Node2D" parent="."]
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="RigidBody2D2" type="StaticBody2D" parent="Borders"]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RigidBody2D2"]
+position = Vector2(-115, 324)
+shape = SubResource("RectangleShape2D_tjnu7")
+
+[node name="RigidBody2D" type="StaticBody2D" parent="Borders"]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RigidBody2D"]
+position = Vector2(1269, 310)
+shape = SubResource("RectangleShape2D_tjnu7")
+
+[node name="RigidBody2D3" type="StaticBody2D" parent="Borders"]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RigidBody2D3"]
+position = Vector2(579.5, -28.5)
+shape = SubResource("RectangleShape2D_oc4rw")
+
+[node name="RigidBody2D4" type="StaticBody2D" parent="Borders"]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RigidBody2D4"]
+position = Vector2(587, 674)
+shape = SubResource("RectangleShape2D_oc4rw")
+
+[node name="Missiles" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Meteors" type="Node2D" parent="."]
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_kohhl")]
+position = Vector2(574, 504)
+scale = Vector2(0.75, 0.75)
+
+[node name="Explosions" type="Node2D" parent="."]
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="MeteorTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+autostart = true
+
+[node name="StarTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+autostart = true
+
+[node name="EnemyTimer" type="Timer" parent="Timers"]
+autostart = true
+
+[connection signal="shoot_missile" from="Player" to="." method="_on_player_shoot_missile"]
+[connection signal="shoot_signal" from="Player" to="." method="_on_player_shoot_signal"]
+[connection signal="timeout" from="Timers/MeteorTimer" to="." method="_on_meteor_timer_timeout"]
+[connection signal="timeout" from="Timers/StarTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
