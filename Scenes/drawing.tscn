@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://dn06r1wl1lmm"]
+
+[ext_resource type="Script" path="res://drawing.gd" id="1_361n2"]
+[ext_resource type="PackedScene" uid="uid://b3uetuq500ai2" path="res://tile_map.tscn" id="2_0dm7n"]
+[ext_resource type="PackedScene" uid="uid://bxg3evuvi04ix" path="res://Scenes/wire_area.tscn" id="3_vl8al"]
+[ext_resource type="FontFile" uid="uid://7pagvgi3krt" path="res://Assets/Kenney Future.ttf" id="4_adtnb"]
+[ext_resource type="Texture2D" uid="uid://cnva38u6gq5jo" path="res://Assets/towerDefense_tile252.png" id="4_cdohb"]
+[ext_resource type="Texture2D" uid="uid://dqxqe4ji55ci3" path="res://Assets/tile_0015.png" id="5_8vdwo"]
+[ext_resource type="Texture2D" uid="uid://wfloqrmbwitq" path="res://Assets/tile_0026.png" id="5_hdqru"]
+[ext_resource type="Texture2D" uid="uid://b11td84f8up4q" path="res://Assets/tile_0098-1.png" id="8_e4ta7"]
+
+[node name="Drawing" type="Node2D"]
+script = ExtResource("1_361n2")
+
+[node name="TileMap" parent="." instance=ExtResource("2_0dm7n")]
+z_index = -1
+position = Vector2(-8, -15)
+
+[node name="Start" parent="TileMap" instance=ExtResource("3_vl8al")]
+z_index = 1
+position = Vector2(816, 542)
+
+[node name="Label2" type="Label" parent="TileMap/Start"]
+offset_left = -84.0007
+offset_top = -14.6088
+offset_right = 104.999
+offset_bottom = 68.3912
+theme_override_fonts/font = ExtResource("4_adtnb")
+theme_override_font_sizes/font_size = 40
+text = "Start
+"
+horizontal_alignment = 1
+
+[node name="Missile" parent="TileMap" instance=ExtResource("3_vl8al")]
+z_index = 1
+position = Vector2(941.457, 475.206)
+area_type = "MISSILE"
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Missile"]
+position = Vector2(-4.19617e-05, -2.67029e-05)
+scale = Vector2(2.84598, 2.84599)
+texture = ExtResource("4_cdohb")
+
+[node name="Gun" parent="TileMap" instance=ExtResource("3_vl8al")]
+z_index = 1
+position = Vector2(855.403, 561.26)
+area_type = "GUN"
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Gun"]
+position = Vector2(-1.47323, 2.7026)
+scale = Vector2(7.56415, 7.56415)
+texture = ExtResource("5_8vdwo")
+
+[node name="Shield" parent="TileMap" instance=ExtResource("3_vl8al")]
+z_index = 1
+position = Vector2(993.285, 568.105)
+area_type = "SHIELD"
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Shield"]
+position = Vector2(-4.19617e-05, -2.67029e-05)
+scale = Vector2(8.48212, 8.48213)
+texture = ExtResource("5_hdqru")
+
+[node name="Speed" parent="TileMap" instance=ExtResource("3_vl8al")]
+z_index = 1
+position = Vector2(993.285, 568.105)
+area_type = "SPEED"
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Speed"]
+position = Vector2(-4.19617e-05, -2.67029e-05)
+scale = Vector2(7.68395, 7.68396)
+texture = ExtResource("8_e4ta7")
+
+[node name="End" parent="TileMap" instance=ExtResource("3_vl8al")]
+position = Vector2(1119, 541)
+area_type = "END"
+
+[node name="Label2" type="Label" parent="TileMap/End"]
+offset_left = -98.6096
+offset_top = -10.9566
+offset_right = 109.39
+offset_bottom = 82.0434
+theme_override_fonts/font = ExtResource("4_adtnb")
+theme_override_font_sizes/font_size = 40
+text = "End
+
+"
+horizontal_alignment = 1
+
+[node name="TopLeft" type="Node2D" parent="TileMap"]
+position = Vector2(784, 432)
+
+[node name="BottomRight" type="Node2D" parent="TileMap"]
+position = Vector2(1148, 653)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 871.0
+offset_top = 471.0
+offset_right = 1057.0
+offset_bottom = 573.0
+text = "Configure Ship
+"
+
+[connection signal="mouse_clicked_in_area" from="TileMap/Start" to="." method="_on_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="TileMap/Start" to="." method="_on_mouse_in_area"]
+[connection signal="mouse_clicked_in_area" from="TileMap/Missile" to="." method="_on_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="TileMap/Missile" to="." method="_on_mouse_in_area"]
+[connection signal="mouse_clicked_in_area" from="TileMap/Gun" to="." method="_on_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="TileMap/Gun" to="." method="_on_mouse_in_area"]
+[connection signal="mouse_clicked_in_area" from="TileMap/Shield" to="." method="_on_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="TileMap/Shield" to="." method="_on_mouse_in_area"]
+[connection signal="mouse_clicked_in_area" from="TileMap/Speed" to="." method="_on_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="TileMap/Speed" to="." method="_on_mouse_in_area"]
+[connection signal="mouse_clicked_in_area" from="TileMap/End" to="." method="_on_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="TileMap/End" to="." method="_on_mouse_in_area"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
