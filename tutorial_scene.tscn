@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=3 uid="uid://da3et56sr1yu1"]
+
+[ext_resource type="Script" path="res://tutorial_scene.gd" id="1_cqon6"]
+[ext_resource type="FontFile" uid="uid://7pagvgi3krt" path="res://Assets/Kenney Future.ttf" id="1_s0epx"]
+[ext_resource type="PackedScene" uid="uid://b6qbcen8khggs" path="res://title_screen.tscn" id="2_yness"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2962.0
+offset_bottom = 1666.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.28, 0.28)
+script = ExtResource("1_cqon6")
+title_scene = ExtResource("2_yness")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 3.547
+anchor_bottom = 3.571
+offset_right = 27.8557
+offset_bottom = -0.00805664
+scale = Vector2(0.28068, 0.278817)
+color = Color(0.0263792, 0.0529803, 0.163514, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1228.57
+offset_top = 228.571
+offset_right = 2872.57
+offset_bottom = 453.571
+theme_override_fonts/font = ExtResource("1_s0epx")
+theme_override_font_sizes/font_size = 200
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 57.1428
+offset_top = 685.714
+offset_right = 1701.14
+offset_bottom = 910.714
+theme_override_fonts/font = ExtResource("1_s0epx")
+theme_override_font_sizes/font_size = 100
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2142.86
+offset_top = 685.714
+offset_right = 3786.86
+offset_bottom = 910.714
+theme_override_fonts/font = ExtResource("1_s0epx")
+theme_override_font_sizes/font_size = 100
+text = "Ship circuitry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2142.86
+offset_top = 1000.0
+offset_right = 3786.86
+offset_bottom = 1246.0
+theme_override_fonts/font = ExtResource("1_s0epx")
+theme_override_font_sizes/font_size = 70
+text = "Use Your Mouse to draw a circuit through the start and end of your circuit Module"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2142.86
+offset_top = 1314.29
+offset_right = 3786.86
+offset_bottom = 1560.29
+theme_override_fonts/font = ExtResource("1_s0epx")
+theme_override_font_sizes/font_size = 70
+text = "By Drawing a circuit through ypur ship's tools, you will activate them"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2142.86
+offset_top = 1628.57
+offset_right = 3786.86
+offset_bottom = 1874.57
+theme_override_fonts/font = ExtResource("1_s0epx")
+theme_override_font_sizes/font_size = 70
+text = "However, you can only draw a circuit through, at most, two tools"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 114.286
+offset_top = 114.286
+offset_right = 454.286
+offset_bottom = 235.286
+scale = Vector2(1.525, 1.66766)
+theme_override_fonts/font = ExtResource("1_s0epx")
+theme_override_font_sizes/font_size = 100
+text = "back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
