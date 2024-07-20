@@ -5,13 +5,14 @@ var lifetime
 var target_scale
 var target_rotation
 var velocity = Vector2.ZERO
+var rotation_velocity = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var rng = RandomNumberGenerator.new()
 	texture = load("res://Assets/explosions/explosion0"+str(rng.randi_range(0,8))+".png")
 	scale = Vector2.ZERO
 	target_scale = Vector2(1,1) * rng.randf_range(0.25,0.75)
-	target_rotation = rng.randf_range(-PI,PI)
+	target_rotation = rng.randf_range(-PI,PI)+rotation_speed
 	lifetime = rng.randf_range(1,2)
 	$AudioStreamPlayer.stream = load("res://Audio/explosionCrunch_00"+str(rng.randi_range(0,2))+".ogg")
 	$AudioStreamPlayer.play()
