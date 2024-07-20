@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxg3evuvi04ix"]
+
+[ext_resource type="Texture2D" uid="uid://uok1jjhhwfhs" path="res://icon.svg" id="1_og47d"]
+[ext_resource type="Script" path="res://wire_area.gd" id="2_b1x5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdguo"]
+size = Vector2(207.143, 185.714)
+
+[node name="WireArea" type="Sprite2D"]
+position = Vector2(429, 238)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("1_og47d")
+script = ExtResource("2_b1x5f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.57141, 0)
+shape = SubResource("RectangleShape2D_kdguo")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
