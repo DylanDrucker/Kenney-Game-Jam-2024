@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://co3hvjw6sdq4i"]
+
+[ext_resource type="Texture2D" uid="uid://bnq3u5uh064ra" path="res://Assets/Shooter/playerShip3_blue.png" id="1_ic0mn"]
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_qciwq"]
+[ext_resource type="Texture2D" uid="uid://b1fajpf8hg2h3" path="res://Assets/Shooter/Parts/gun05.png" id="3_lk3po"]
+
+[node name="Enemy" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 16
+collision_mask = 15
+script = ExtResource("1_qciwq")
+
+[node name="body" type="Sprite2D" parent="."]
+light_mask = 16
+texture = ExtResource("1_ic0mn")
+flip_v = true
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(1, 42)
+scale = Vector2(0.595238, 0.595238)
+texture = ExtResource("3_lk3po")
+
+[node name="LaserShoot" type="Marker2D" parent="."]
+position = Vector2(0, 66)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, 36, 15, 13, 48, -25, 22, -26, 11, -37, -12, -36, -23, -26, -48, -25, -12, 14)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

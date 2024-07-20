@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bln7sc07dxo78"]
+
+[ext_resource type="Texture2D" uid="uid://daox7j0qbky2s" path="res://Assets/missiles/towerDefense_tile251.png" id="1_tvur6"]
+[ext_resource type="Script" path="res://Scenes/missile.gd" id="1_ya512"]
+[ext_resource type="Texture2D" uid="uid://c4pedv1fjvnb2" path="res://Assets/missiles/towerDefense_tile297.png" id="2_w0bka"]
+[ext_resource type="Script" path="res://Scenes/Missile_collision.gd" id="2_yk21o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqm25"]
+radius = 6.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8mrq"]
+radius = 273.359
+
+[node name="Missile" type="Node2D"]
+script = ExtResource("1_ya512")
+
+[node name="Missile" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
+collision_layer = 4
+collision_mask = 24
+script = ExtResource("2_yk21o")
+
+[node name="MissileFlame" type="Sprite2D" parent="Missile"]
+position = Vector2(0, 43)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_w0bka")
+flip_v = true
+
+[node name="Missile" type="Sprite2D" parent="Missile"]
+position = Vector2(-0.5, 0)
+texture = ExtResource("1_tvur6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Missile"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_aqm25")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_n8mrq")
+
+[connection signal="hit_by_meteor_internal" from="Missile" to="." method="_on_missile_hit_by_meteor_internal"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

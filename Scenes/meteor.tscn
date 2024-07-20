@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://chkjdx56xkr5m"]
+
+[ext_resource type="Script" path="res://Scenes/meteor.gd" id="1_6lekl"]
+[ext_resource type="Texture2D" uid="uid://bmxl4hmgvkxqb" path="res://Assets/Shooter/Meteors/meteorBrown_big4.png" id="1_6y368"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amptd"]
+radius = 37.0
+
+[node name="Meteor" type="Area2D"]
+collision_layer = 8
+collision_mask = 23
+script = ExtResource("1_6lekl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6y368")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_amptd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
