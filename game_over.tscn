@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game_over.gd" id="1_0vb28"]
 [ext_resource type="Texture2D" uid="uid://c31uord3xuiok" path="res://Assets/ship_0014-1(1).png" id="1_fomkc"]
 [ext_resource type="FontFile" uid="uid://7pagvgi3krt" path="res://Assets/Kenney Future.ttf" id="3_jac0v"]
-[ext_resource type="PackedScene" path="res://Assets/button.tscn" id="4_mjnli"]
+[ext_resource type="PackedScene" uid="uid://ddgmlarrxj56h" path="res://Assets/button.tscn" id="4_mjnli"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2ewx"]
 atlas = ExtResource("1_fomkc")

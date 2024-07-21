@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://e5j3lmwcs2w3"]
+
+[ext_resource type="FontFile" uid="uid://7pagvgi3krt" path="res://Assets/Kenney Future.ttf" id="1_qns4o"]
+[ext_resource type="Script" path="res://weapons.gd" id="1_v1ant"]
+[ext_resource type="Texture2D" uid="uid://bb40ar520fgmq" path="res://Assets/tile_0195.png" id="2_wyru7"]
+[ext_resource type="Texture2D" uid="uid://b11td84f8up4q" path="res://Assets/tile_0098-1.png" id="3_2eg85"]
+[ext_resource type="Texture2D" uid="uid://wfloqrmbwitq" path="res://Assets/tile_0026.png" id="4_u7cu5"]
+[ext_resource type="Texture2D" uid="uid://dqxqe4ji55ci3" path="res://Assets/tile_0015.png" id="5_ragw0"]
+[ext_resource type="Texture2D" uid="uid://cnva38u6gq5jo" path="res://Assets/towerDefense_tile252.png" id="6_ncbou"]
+[ext_resource type="PackedScene" uid="uid://ddgmlarrxj56h" path="res://Assets/button.tscn" id="8_f840m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v1ant")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_qns4o")
+theme_override_font_sizes/font_size = 80
+text = "Weapons"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Label"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 232.0
+offset_top = 144.0
+offset_right = -238.0
+offset_bottom = 429.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_qns4o")
+theme_override_font_sizes/font_size = 25
+text = "LASER:                	eFFECTIVE ON aLIENS
+
+mISSILE:            eFFECTIVE ON asteroids
+
+shield:               absorbs damage
+
+speed:                increases movement speed
+
+REGEN:                regenerates health
+"
+
+[node name="Tile0195" type="Sprite2D" parent="."]
+position = Vector2(192, 464)
+scale = Vector2(3.40525, 3.40525)
+texture = ExtResource("2_wyru7")
+
+[node name="Tile0098-1" type="Sprite2D" parent="."]
+position = Vector2(192, 400)
+scale = Vector2(2.85074, 2.85074)
+texture = ExtResource("3_2eg85")
+
+[node name="Tile0026" type="Sprite2D" parent="."]
+position = Vector2(192, 336)
+scale = Vector2(3.45308, 3.45308)
+texture = ExtResource("4_u7cu5")
+
+[node name="Tile0015" type="Sprite2D" parent="."]
+position = Vector2(192, 208)
+scale = Vector2(2.90735, 2.90735)
+texture = ExtResource("5_ragw0")
+
+[node name="TowerDefenseTile252" type="Sprite2D" parent="."]
+position = Vector2(192, 264)
+texture = ExtResource("6_ncbou")
+
+[node name="Button" parent="." instance=ExtResource("8_f840m")]
+offset_left = 55.0
+offset_top = 48.0
+offset_right = 247.0
+offset_bottom = 112.0
+scale = Vector2(0.546174, 1.21739)
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = -93.3768
+offset_right = 98.6232
+offset_bottom = 61.0
+scale = Vector2(2.08184, 1.03002)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qns4o")
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

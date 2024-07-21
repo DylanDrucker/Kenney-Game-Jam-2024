@@ -116,4 +116,25 @@ text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button2" parent="." instance=ExtResource("3_mh02v")]
+layout_mode = 0
+offset_left = 986.0
+offset_top = 48.0
+offset_right = 1178.0
+offset_bottom = 112.0
+scale = Vector2(0.69803, 1.25031)
+
+[node name="Label" type="Label" parent="Button2"]
+layout_mode = 0
+offset_left = -78.7932
+offset_right = 113.207
+offset_bottom = 61.0
+scale = Vector2(1.83293, 1.03002)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_sx2t3")
+text = "Weapons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
