@@ -120,8 +120,9 @@ func _on_game_over():
 func _on_master_timer_timeout():
 	#time for player to get acquainted
 	#await left_right_wave()
+	combo_square_n_solid_wave()
 	await get_tree().create_timer(3).timeout
-	await solid_wave()
+	#await solid_wave()
 	var rng = RandomNumberGenerator.new()
 	while true:
 		var random_scene = rng.randi_range(0,10)
@@ -138,6 +139,11 @@ func _on_master_timer_timeout():
 				await square_wave()
 			5: 
 				await left_right_wave()
+			6:
+				await chaos_wave()
+			7:
+				await combo_square_n_solid_wave()
+				
 		await get_tree().create_timer(10).timeout
 	
 	#quick_charge_diagonal()
@@ -146,8 +152,33 @@ func _on_master_timer_timeout():
 	#await get_tree().create_timer(2).timeout
 	#create_meteors(10)
 	
-	"""#one wave of squares
-	"""
+func combo_square_n_solid_wave():
+	await solid_wave()
+	await get_tree().create_timer(5).timeout
+	await square_wave()
+	await get_tree().create_timer(3).timeout
+	await solid_wave()
+	await get_tree().create_timer(1).timeout
+	
+	
+func chaos_wave():
+	create_enemies(enemy_square_scene,5,100,true,10)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_square_scene,5,100,true,10)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_square_scene,5,30,true,10)
+	await get_tree().create_timer(1).timeout	
+	create_enemies(enemy_square_scene,5,30,true,10)
+	await get_tree().create_timer(1).timeout
+	var rng = RandomNumberGenerator.new()
+	match rng.randi_range(0,1):
+		0:
+			small_meteor_shower()
+		1:
+			big_meteor_shower()
+		
+	
+
 func left_right_wave():
 	for i in range(5):
 		create_enemies(enemy_left_right_scene,10,10,false,4)
@@ -169,7 +200,7 @@ func quick_charge_diagonal():
 	await get_tree().create_timer(1).timeout
 	
 func solid_wave():
-	create_enemies(enemy_down_scene,30,10,false,7)
+	create_enemies(enemy_down_scene,30,10,false,3)
 	
 func square_wave():
 	create_enemies(enemy_square_scene,5,100,true,10)
