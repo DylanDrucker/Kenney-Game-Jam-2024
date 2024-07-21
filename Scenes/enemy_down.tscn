@@ -21,4 +21,11 @@ polygon = PackedVector2Array(-9, -8, -9, 6, 0, 12, 9, 5, 9, -8)
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="LeaveTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="LeaveTimer" to="." method="_on_leave_timer_timeout"]

@@ -12,34 +12,34 @@ height = 38.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8mrq"]
 radius = 273.359
 
-[node name="Missile" type="Node2D"]
+[node name="Missile" type="Node2D" groups=["Missile"]]
 script = ExtResource("1_ya512")
 
-[node name="Missile" type="Area2D" parent="."]
+[node name="Missile" type="Area2D" parent="." groups=["Missile"]]
 scale = Vector2(0.4, 0.4)
 collision_layer = 4
 collision_mask = 24
 script = ExtResource("2_yk21o")
 
-[node name="MissileFlame" type="Sprite2D" parent="Missile"]
+[node name="MissileFlame" type="Sprite2D" parent="Missile" groups=["Missile"]]
 position = Vector2(0, 43)
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("2_w0bka")
 flip_v = true
 
-[node name="Missile" type="Sprite2D" parent="Missile"]
+[node name="Missile" type="Sprite2D" parent="Missile" groups=["Missile"]]
 position = Vector2(-0.5, 0)
 texture = ExtResource("1_tvur6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Missile"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Missile" groups=["Missile"]]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_aqm25")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Missile"]]
 collision_layer = 32
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Missile"]]
 shape = SubResource("CircleShape2D_n8mrq")
 
 [connection signal="hit_by_meteor_internal" from="Missile" to="." method="_on_missile_hit_by_meteor_internal"]

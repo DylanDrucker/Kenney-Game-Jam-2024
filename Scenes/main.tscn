@@ -168,6 +168,7 @@ script = ExtResource("10_cx5uc")
 
 [node name="Panel" type="Panel" parent="WarningMessage"]
 z_index = -3
+layout_mode = 0
 offset_left = -45.0
 offset_top = -14.0
 offset_right = 769.0
@@ -177,6 +178,8 @@ mouse_filter = 2
 [connection signal="update_score" from="." to="Label" method="_on_game_update_score"]
 [connection signal="shoot_missile" from="Player" to="." method="_on_player_shoot_missile"]
 [connection signal="shoot_signal" from="Player" to="." method="_on_player_shoot_signal"]
+[connection signal="update_health" from="Player" to="Label3" method="_on_player_update_health"]
+[connection signal="update_shield" from="Player" to="Label4" method="_on_player_update_shield"]
 [connection signal="timeout" from="Timers/MeteorTimer" to="." method="_on_meteor_timer_timeout"]
 [connection signal="timeout" from="Timers/StarTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]

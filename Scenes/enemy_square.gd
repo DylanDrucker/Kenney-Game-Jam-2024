@@ -19,6 +19,7 @@ var up = 50
 
 var direction = 0
 
+var down_speed = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,16 +31,16 @@ func _process(delta):
 	var velocity = Vector2(0,1)
 	if direction == 0:
 		velocity.x = -4
-		velocity.y = 1
+		velocity.y = down_speed
 	elif direction == 1:
 		velocity.x = 0
-		velocity.y = 5
+		velocity.y = down_speed + 4
 	elif direction == 2:
 		velocity.x = 4
-		velocity.y = 1
+		velocity.y = down_speed
 	elif direction == 3:
 		velocity.x = 0
-		velocity.y = -3
+		velocity.y = down_speed - 4
 		
 	position += velocity * speed * delta
 	
@@ -82,3 +83,7 @@ func _on_change_direction_timeout():
 		direction+=1
 	else:
 		direction = 0
+
+
+func _on_leave_screen_timer_timeout():
+	down_speed = 8
