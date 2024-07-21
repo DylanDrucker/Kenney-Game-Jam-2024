@@ -70,13 +70,16 @@ scale = Vector2(0.75, 0.75)
 
 [node name="MeteorTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
-autostart = true
 
 [node name="StarTimer" type="Timer" parent="Timers"]
 wait_time = 0.1
 autostart = true
 
 [node name="EnemyTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="MasterTimer" type="Timer" parent="Timers"]
+one_shot = true
 autostart = true
 
 [node name="Drawing" parent="." instance=ExtResource("3_o8voo")]
@@ -131,6 +134,7 @@ script = ExtResource("5_uvydu")
 [connection signal="timeout" from="Timers/MeteorTimer" to="." method="_on_meteor_timer_timeout"]
 [connection signal="timeout" from="Timers/StarTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="Timers/MasterTimer" to="." method="_on_master_timer_timeout"]
 [connection signal="valid_areas" from="Drawing" to="Player" method="on_tool_change"]
 [connection signal="valid_areas" from="Drawing" to="Equipped Weapons" method="_on_drawing_valid_areas"]
 [connection signal="game_over" from="Label3" to="." method="_on_label_3_game_over"]
