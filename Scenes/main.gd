@@ -4,7 +4,8 @@ var laser_scene: PackedScene = load("res://Scenes/laser.tscn")
 var missile_scene: PackedScene = load("res://Scenes/missile.tscn")
 
 var meteor_scene: PackedScene = load("res://Scenes/meteor.tscn")
-var enemy_scene: PackedScene = load("res://Scenes/enemy.tscn")
+var enemy_down_scene: PackedScene = load("res://Scenes/enemy_down.tscn")
+var enemy_left_right_scene: PackedScene = load("res://Scenes/enemy_left_right.tscn")
 
 var small_star_scene: PackedScene = load("res://Scenes/smallstar.tscn")
 var medium_star_scene: PackedScene = load("res://Scenes/medium_star.tscn")
@@ -63,12 +64,14 @@ func create_meteors(num):
 		meteor.connect("collision",_on_collision)
 		meteor.connect("explosion",on_explosion)
 
-func create_enemies(num, offset):
+func create_enemies(enemy_type,num, offset):
 	var num_enemies = num
 	for i in range(num_enemies):
-		var enemy = enemy_scene.instantiate()
+		var enemy = enemy_type.instantiate()
 		$Enemies.add_child(enemy)
 		enemy.position = Vector2((i)*(766/(num_enemies))+offset,-10)
+		if enemy_type == enemy_left_right_scene:
+			enemy.starting_pos = enemy.position.x
 		enemy.connect("shoot_enemy_laser", on_enemy_laser)
 		enemy.connect("explosion",on_explosion)
 	
@@ -104,8 +107,8 @@ func _on_game_over():
 
 
 func _on_master_timer_timeout():
-	create_enemies(9,10)
+	create_enemies(enemy_down_scene,9,10)
 	await get_tree().create_timer(2).timeout
-	create_enemies(9,50)
+	create_enemies(enemy_left_right_scene,9,50)
 	await get_tree().create_timer(2).timeout
 	create_meteors(10)
