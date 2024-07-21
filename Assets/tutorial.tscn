@@ -95,6 +95,7 @@ text = "Circuitry"
 horizontal_alignment = 1
 
 [node name="Drawing" parent="." instance=ExtResource("2_kqqqd")]
+z_index = 4
 
 [node name="Button" parent="." instance=ExtResource("3_mh02v")]
 layout_mode = 0
