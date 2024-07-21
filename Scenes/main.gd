@@ -149,7 +149,7 @@ func _on_master_timer_timeout():
 				await multiple_quick_down()
 			10:
 				await solid_shoot_n_left_n_right_wave()
-		await get_tree().create_timer(6).timeout
+		await get_tree().create_timer(10).timeout
 	
 	#quick_charge_diagonal()
 	#one wave of enemies that charge
