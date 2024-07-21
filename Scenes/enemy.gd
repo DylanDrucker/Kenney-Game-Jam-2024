@@ -3,6 +3,7 @@ extends Area2D
 var laser_can_shoot := true
 var speed := 25
 var horizontal := 0
+var down_speed = 1
 var width
 var reload_time = 1
 @export var enemy_lives := 4
@@ -16,7 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += Vector2(horizontal,1) * speed * delta
+	position += Vector2(horizontal,down_speed) * speed * delta
 	if laser_can_shoot:
 		emit_signal("shoot_enemy_laser", $LaserShoot.global_position)
 		laser_can_shoot = false
@@ -47,3 +48,14 @@ func hit_by_meteor():
 	emit_signal("explosion",global_position,Vector2(horizontal,1) * speed,0)
 	self.queue_free()
 	return false
+
+
+func _on_leave_timer_timeout():
+	down_speed = 8
+
+
+func _on_area_entered(area):
+	if area.is_in_group("Missile"):
+		emit_signal("explosion",global_position,Vector2(horizontal,1) * speed,0)
+		area.queue_free()
+		self.queue_free()
