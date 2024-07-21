@@ -121,7 +121,7 @@ vertical_alignment = 1
 
 [node name="Warning" type="Label" parent="."]
 offset_left = 770.0
-offset_top = 329.0
+offset_top = 360.0
 offset_right = 1146.0
 offset_bottom = 416.0
 theme_override_fonts/font = ExtResource("4_adtnb")
