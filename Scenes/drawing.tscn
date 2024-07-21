@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn06r1wl1lmm"]
+[gd_scene load_steps=12 format=3 uid="uid://dn06r1wl1lmm"]
 
 [ext_resource type="Script" path="res://drawing.gd" id="1_361n2"]
 [ext_resource type="PackedScene" uid="uid://b3uetuq500ai2" path="res://tile_map.tscn" id="2_0dm7n"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://wfloqrmbwitq" path="res://Assets/tile_0026.png" id="5_hdqru"]
 [ext_resource type="Texture2D" uid="uid://b11td84f8up4q" path="res://Assets/tile_0098-1.png" id="8_e4ta7"]
 [ext_resource type="PackedScene" uid="uid://ddgmlarrxj56h" path="res://Assets/button.tscn" id="9_bjf10"]
+[ext_resource type="Texture2D" uid="uid://bb40ar520fgmq" path="res://Assets/tile_0195.png" id="9_iuufu"]
+[ext_resource type="Script" path="res://Scenes/warning.gd" id="11_nh6vw"]
 
 [node name="Drawing" type="Node2D"]
 script = ExtResource("1_361n2")
@@ -72,6 +74,16 @@ position = Vector2(-4.19617e-05, -2.67029e-05)
 scale = Vector2(7.68395, 7.68396)
 texture = ExtResource("8_e4ta7")
 
+[node name="Regen" parent="TileMap" instance=ExtResource("3_vl8al")]
+z_index = 1
+position = Vector2(907, 612)
+area_type = "REGEN"
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Regen"]
+position = Vector2(-4.19617e-05, -2.67029e-05)
+scale = Vector2(7.68395, 7.68396)
+texture = ExtResource("9_iuufu")
+
 [node name="End" parent="TileMap" instance=ExtResource("3_vl8al")]
 position = Vector2(1119, 541)
 area_type = "END"
@@ -106,6 +118,18 @@ text = "Configure Ship"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Warning" type="Label" parent="."]
+offset_left = 770.0
+offset_top = 329.0
+offset_right = 1146.0
+offset_bottom = 416.0
+theme_override_fonts/font = ExtResource("4_adtnb")
+theme_override_font_sizes/font_size = 20
+text = "Warning: Test Tezt Test Test Test Test "
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("11_nh6vw")
+
 [connection signal="mouse_clicked_in_area" from="TileMap/Start" to="." method="_on_mouse_clicked_in_area"]
 [connection signal="mouse_in_area" from="TileMap/Start" to="." method="_on_mouse_in_area"]
 [connection signal="mouse_clicked_in_area" from="TileMap/Missile" to="." method="_on_mouse_clicked_in_area"]
@@ -116,6 +140,8 @@ vertical_alignment = 1
 [connection signal="mouse_in_area" from="TileMap/Shield" to="." method="_on_mouse_in_area"]
 [connection signal="mouse_clicked_in_area" from="TileMap/Speed" to="." method="_on_mouse_clicked_in_area"]
 [connection signal="mouse_in_area" from="TileMap/Speed" to="." method="_on_mouse_in_area"]
+[connection signal="mouse_clicked_in_area" from="TileMap/Regen" to="." method="_on_mouse_clicked_in_area"]
+[connection signal="mouse_in_area" from="TileMap/Regen" to="." method="_on_mouse_in_area"]
 [connection signal="mouse_clicked_in_area" from="TileMap/End" to="." method="_on_mouse_clicked_in_area"]
 [connection signal="mouse_in_area" from="TileMap/End" to="." method="_on_mouse_in_area"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
