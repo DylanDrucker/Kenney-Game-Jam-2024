@@ -49,6 +49,8 @@ func _input(event):
 		if len(area_list) > 0:
 			if area_list[-1] != "END":
 				$Warning.show_warning("Circuit Must connect start to end")
+				$AudioStreamPlayer.stream = load("res://Audio/error_008.ogg")
+				$AudioStreamPlayer.play()
 		new_line = true
 		enabled = false
 		if invalid_wire():
@@ -62,8 +64,10 @@ func _input(event):
 			$Button.visible = true
 			$TileMap.visible = false
 			valid_areas.emit(area_list)
-		
+			$AudioStreamPlayer.stream = load("res://Audio/confirmation_002.ogg")
+			$AudioStreamPlayer.play()
 			positions = []
+			area_list = []
 			queue_redraw()
 			
 
@@ -88,6 +92,9 @@ func invalid_wire():
 func update_area_list(type):
 	if type not in area_list:
 		area_list.append(type)
+		if type != 'START':
+			$AudioStreamPlayer.stream = load("res://Audio/confirmation_001.ogg")
+			$AudioStreamPlayer.play()
 
 
 
@@ -137,6 +144,8 @@ func _on_mouse_clicked_in_area(type):
 	if type == "START":
 		enabled = true
 		update_area_list(type)
+		$AudioStreamPlayer.stream = load("res://Audio/confirmation_001.ogg")
+		$AudioStreamPlayer.play()
 
 func _on_mouse_in_area(type):
 	if type == 'END':
@@ -146,4 +155,6 @@ func _on_mouse_in_area(type):
 			queue_redraw()
 		else:
 			$Warning.show_warning("Can Only connect two weapons at once")
+			$AudioStreamPlayer.stream = load("res://Audio/error_008.ogg")
+			$AudioStreamPlayer.play()
 	update_area_list(type)

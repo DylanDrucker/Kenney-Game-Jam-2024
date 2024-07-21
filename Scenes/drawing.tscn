@@ -130,6 +130,8 @@ vertical_alignment = 1
 autowrap_mode = 2
 script = ExtResource("11_nh6vw")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="mouse_clicked_in_area" from="TileMap/Start" to="." method="_on_mouse_clicked_in_area"]
 [connection signal="mouse_in_area" from="TileMap/Start" to="." method="_on_mouse_in_area"]
 [connection signal="mouse_clicked_in_area" from="TileMap/Missile" to="." method="_on_mouse_clicked_in_area"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddgmlarrxj56h"]
+[gd_scene load_steps=6 format=3 uid="uid://ddgmlarrxj56h"]
 
 [ext_resource type="Texture2D" uid="uid://3u16q2210da2" path="res://Assets/button_rectangle_depth_flat-1.png.png" id="1_ook5p"]
 [ext_resource type="Texture2D" uid="uid://djnydb878cgjv" path="res://Assets/button_rectangle_depth_flat-1.png-1.png.png" id="2_udtwv"]
+[ext_resource type="Script" path="res://Assets/button.gd" id="3_8tbwd"]
+[ext_resource type="AudioStream" uid="uid://m2c5rshm7bsy" path="res://Audio/click2.ogg" id="4_wjhmq"]
 
 [sub_resource type="Theme" id="Theme_ohk6c"]
 
@@ -14,3 +16,9 @@ scale = Vector2(1.30745, 1.30745)
 theme = SubResource("Theme_ohk6c")
 texture_normal = ExtResource("1_ook5p")
 texture_pressed = ExtResource("2_udtwv")
+script = ExtResource("3_8tbwd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wjhmq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
