@@ -1,6 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://db3t8uvuu4hvj"]
+[gd_scene load_steps=31 format=3 uid="uid://db3t8uvuu4hvj"]
 
+[ext_resource type="Script" path="res://game_over.gd" id="1_0vb28"]
 [ext_resource type="Texture2D" uid="uid://c31uord3xuiok" path="res://Assets/ship_0014-1(1).png" id="1_fomkc"]
+[ext_resource type="FontFile" uid="uid://7pagvgi3krt" path="res://Assets/Kenney Future.ttf" id="3_jac0v"]
+[ext_resource type="PackedScene" uid="uid://ddgmlarrxj56h" path="res://Assets/button.tscn" id="4_mjnli"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2ewx"]
 atlas = ExtResource("1_fomkc")
@@ -180,7 +183,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ul07p")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
@@ -192,9 +195,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0vb28")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(576, 312)
 sprite_frames = SubResource("SpriteFrames_iylhs")
-frame = 14
-frame_progress = 0.909065
+frame = 24
+frame_progress = 1.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jac0v")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER
+"
+horizontal_alignment = 1
+
+[node name="Button" parent="." instance=ExtResource("4_mjnli")]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 432.0
+offset_right = 648.0
+offset_bottom = 496.0
+
+[node name="Label2" type="Label" parent="Button"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jac0v")
+text = "tITLE sCREEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
