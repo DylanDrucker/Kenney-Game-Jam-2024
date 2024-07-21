@@ -18,15 +18,14 @@ var num_stars = -1
 var width
 @export var game_over_scene : PackedScene
 
+@onready var planet = $Planet
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	width = get_viewport().get_visible_rect().size[0]
 	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_player_shoot_signal(pos_left, pos_right):
@@ -131,3 +130,7 @@ func _on_master_timer_timeout():
 	create_enemies(enemy_square_scene,5,30)
 	await get_tree().create_timer(1).timeout	
 	create_enemies(enemy_square_scene,5,30)
+
+
+func _on_background_music_finished():
+	$BackgroundMusic.play()
