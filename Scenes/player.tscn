@@ -62,5 +62,12 @@ position = Vector2(0, -44.575)
 visible = false
 texture = ExtResource("7_0n57e")
 
+[node name="ShieldRegenTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="HealthRegenTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="LaserTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MissileTimer" to="." method="_on_missile_timer_timeout"]
+[connection signal="timeout" from="ShieldRegenTimer" to="." method="_on_shield_regen_timer_timeout"]
+[connection signal="timeout" from="HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]

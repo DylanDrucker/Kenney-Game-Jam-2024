@@ -18,3 +18,5 @@ func _on_drawing_valid_areas(weapons):
 		
 	text = new_text
 			
+func _on_player_lose_shield():
+	text = text.replace("SHIELD","")

@@ -11,3 +11,7 @@ func adjust_health(new_health):
 		
 	text = "Health: " + str(health)
 	
+
+
+func _on_player_update_health(new_health):
+	adjust_health(new_health)
