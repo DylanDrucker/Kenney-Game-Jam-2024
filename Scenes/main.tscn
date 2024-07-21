@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3xclijjut6oc"]
+[gd_scene load_steps=16 format=3 uid="uid://c3xclijjut6oc"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0fctq"]
 [ext_resource type="PackedScene" uid="uid://beiuin8lugews" path="res://Scenes/player.tscn" id="1_kohhl"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bhylyjang1374" path="res://Audio/8-bit-space-123218.mp3" id="9_ay3lb"]
 [ext_resource type="Script" path="res://Scenes/warning_message.gd" id="10_cx5uc"]
 [ext_resource type="Texture2D" uid="uid://cfyjwxj3d1kv" path="res://Assets/colored-transparent.png" id="11_b5mnx"]
+[ext_resource type="PackedScene" uid="uid://b0grpor131nm8" path="res://planet.tscn" id="12_mxuwp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
 size = Vector2(236, 775)
@@ -24,7 +25,13 @@ size = Vector2(1439, 75)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0fctq")
 
+[node name="Planet" parent="." instance=ExtResource("12_mxuwp")]
+z_index = -5
+position = Vector2(389, 851)
+scale = Vector2(8.99009, 8.99009)
+
 [node name="BackgroundStars" type="Node2D" parent="."]
+z_index = -10
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -201,3 +208,4 @@ region_rect = Rect2(593.461, 355.991, 19.0875, 17.0087)
 [connection signal="valid_areas" from="Drawing" to="Player" method="on_tool_change"]
 [connection signal="valid_areas" from="Drawing" to="Equipped Weapons" method="_on_drawing_valid_areas"]
 [connection signal="game_over" from="Label3" to="." method="_on_game_over"]
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0grpor131nm8"]
+
+[ext_resource type="Texture2D" uid="uid://bbmg27my2w0cw" path="res://Assets/planet08.png" id="1_dspp0"]
+[ext_resource type="Script" path="res://planet.gd" id="1_fhupa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rrd4"]
+atlas = ExtResource("1_dspp0")
+region = Rect2(0, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oimf1"]
+atlas = ExtResource("1_dspp0")
+region = Rect2(1280, 0, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo0ds"]
+atlas = ExtResource("1_dspp0")
+region = Rect2(0, 1280, 1280, 1280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4l1q"]
+atlas = ExtResource("1_dspp0")
+region = Rect2(1280, 1280, 1280, 1280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs4xg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rrd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oimf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo0ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4l1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fhupa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 2
+scale = Vector2(0.0889815, 0.0889815)
+sprite_frames = SubResource("SpriteFrames_qs4xg")
+autoplay = "default"
+frame_progress = 0.632081
