@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dqxqe4ji55ci3" path="res://Assets/tile_0015.png" id="5_8vdwo"]
 [ext_resource type="Texture2D" uid="uid://wfloqrmbwitq" path="res://Assets/tile_0026.png" id="5_hdqru"]
 [ext_resource type="Texture2D" uid="uid://b11td84f8up4q" path="res://Assets/tile_0098-1.png" id="8_e4ta7"]
-[ext_resource type="PackedScene" uid="uid://ddgmlarrxj56h" path="res://Assets/button.tscn" id="9_bjf10"]
+[ext_resource type="PackedScene" path="res://Assets/button.tscn" id="9_bjf10"]
 [ext_resource type="Texture2D" uid="uid://bb40ar520fgmq" path="res://Assets/tile_0195.png" id="9_iuufu"]
 [ext_resource type="Script" path="res://Scenes/warning.gd" id="11_nh6vw"]
 

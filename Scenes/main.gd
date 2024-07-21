@@ -68,7 +68,7 @@ func create_enemies(enemy_type,num, offset,shoots,time):
 	for i in range(num_enemies):
 		var enemy = enemy_type.instantiate()
 		$Enemies.add_child(enemy)
-		enemy.position = Vector2((i)*(766/(num_enemies))+offset,-10)
+		enemy.position = Vector2((i)*(800/(num_enemies))+offset,-10)
 		if enemy_type == enemy_left_right_scene:
 			enemy.starting_pos = enemy.position.x
 		enemy.laser_can_shoot = shoots
@@ -119,7 +119,7 @@ func _on_game_over():
 
 func _on_master_timer_timeout():
 	#time for player to get acquainted
-	await left_right_wave()
+	#await left_right_wave()
 	await get_tree().create_timer(3).timeout
 	await solid_wave()
 	var rng = RandomNumberGenerator.new()
@@ -138,7 +138,7 @@ func _on_master_timer_timeout():
 				await square_wave()
 			5: 
 				await left_right_wave()
-		await get_tree().create_timer(4).timeout
+		await get_tree().create_timer(10).timeout
 	
 	#quick_charge_diagonal()
 	#one wave of enemies that charge

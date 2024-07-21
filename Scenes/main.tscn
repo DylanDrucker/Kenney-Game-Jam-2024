@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bhylyjang1374" path="res://Audio/8-bit-space-123218.mp3" id="9_ay3lb"]
 [ext_resource type="Script" path="res://Scenes/warning_message.gd" id="10_cx5uc"]
 [ext_resource type="Texture2D" uid="uid://cfyjwxj3d1kv" path="res://Assets/colored-transparent.png" id="11_b5mnx"]
-[ext_resource type="PackedScene" uid="uid://b0grpor131nm8" path="res://planet.tscn" id="12_mxuwp"]
+[ext_resource type="PackedScene" path="res://planet.tscn" id="12_mxuwp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
 size = Vector2(236, 775)
