@@ -149,4 +149,4 @@ script = ExtResource("5_uvydu")
 [connection signal="timeout" from="Timers/MasterTimer" to="." method="_on_master_timer_timeout"]
 [connection signal="valid_areas" from="Drawing" to="Player" method="on_tool_change"]
 [connection signal="valid_areas" from="Drawing" to="Equipped Weapons" method="_on_drawing_valid_areas"]
-[connection signal="game_over" from="Label3" to="." method="_on_label_3_game_over"]
+[connection signal="game_over" from="Label3" to="." method="_on_game_over"]

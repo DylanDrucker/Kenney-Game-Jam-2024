@@ -106,7 +106,7 @@ func on_explosion(pos, velocity, rotation_speed):
 
 
 func _on_game_over():
-	get_tree().change_scene_to_packed(game_over_scene)
+	get_tree().change_scene_to_file("res://game_over.tscn")
 
 
 func _on_master_timer_timeout():

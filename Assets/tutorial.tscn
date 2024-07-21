@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=3 uid="uid://sknlkqhfi3a7"]
+
+[ext_resource type="Script" path="res://Assets/tutorial.gd" id="1_dvmx7"]
+[ext_resource type="FontFile" uid="uid://7pagvgi3krt" path="res://Assets/Kenney Future.ttf" id="1_sx2t3"]
+[ext_resource type="PackedScene" uid="uid://dn06r1wl1lmm" path="res://Scenes/drawing.tscn" id="2_kqqqd"]
+[ext_resource type="PackedScene" uid="uid://ddgmlarrxj56h" path="res://Assets/button.tscn" id="3_mh02v"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_dvmx7")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_sx2t3")
+theme_override_font_sizes/font_size = 80
+text = "How To Play"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 182.0
+offset_right = -540.0
+offset_bottom = 272.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_sx2t3")
+theme_override_font_sizes/font_size = 40
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 55.0
+offset_top = 265.0
+offset_right = -570.0
+offset_bottom = 355.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_sx2t3")
+theme_override_font_sizes/font_size = 25
+text = "Movement:
+wasd or arrow keys
+
+Shoot:
+Space Bar
+
+Draw:
+Left Mouse Button
+"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 612.0
+offset_top = 265.0
+offset_right = -13.0
+offset_bottom = 566.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_sx2t3")
+theme_override_font_sizes/font_size = 20
+text = "Connect a Circuit from start to end, through at most two weapons to activate them. Practice below!
+
+
+
+"
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 546.0
+offset_top = 180.0
+offset_right = 2.0
+offset_bottom = 270.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_sx2t3")
+theme_override_font_sizes/font_size = 40
+text = "Circuitry"
+horizontal_alignment = 1
+
+[node name="Drawing" parent="." instance=ExtResource("2_kqqqd")]
+
+[node name="Button" parent="." instance=ExtResource("3_mh02v")]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 48.0
+offset_right = 247.0
+offset_bottom = 112.0
+scale = Vector2(0.546174, 1.21739)
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = -93.3768
+offset_right = 98.6232
+offset_bottom = 61.0
+scale = Vector2(2.08184, 1.03002)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_sx2t3")
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
