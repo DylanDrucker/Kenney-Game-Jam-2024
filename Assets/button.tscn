@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddgmlarrxj56h"]
+
+[ext_resource type="Texture2D" uid="uid://3u16q2210da2" path="res://Assets/button_rectangle_depth_flat-1.png.png" id="1_ook5p"]
+[ext_resource type="Texture2D" uid="uid://djnydb878cgjv" path="res://Assets/button_rectangle_depth_flat-1.png-1.png.png" id="2_udtwv"]
+
+[sub_resource type="Theme" id="Theme_ohk6c"]
+
+[node name="Button" type="TextureButton"]
+offset_left = 837.0
+offset_top = 491.0
+offset_right = 1029.0
+offset_bottom = 555.0
+scale = Vector2(1.30745, 1.30745)
+theme = SubResource("Theme_ohk6c")
+texture_normal = ExtResource("1_ook5p")
+texture_pressed = ExtResource("2_udtwv")
