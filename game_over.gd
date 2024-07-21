@@ -10,6 +10,9 @@ func _ready():
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D.play()
+	await await get_tree().create_timer(1).timeout
+	$AudioStreamPlayer.stream = load("res://Audio/explosionCrunch_000.ogg")
+	$AudioStreamPlayer.play()
 	await $AnimatedSprite2D.animation_finished
 	
 	$AnimatedSprite2D.visible = false
