@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_6ymoc"]
 [ext_resource type="Texture2D" uid="uid://da1rwuomwhkhs" path="res://Assets/Shooter/Parts/engine2.png" id="2_n5sam"]
 [ext_resource type="Texture2D" uid="uid://wm1bdxhfxdl" path="res://Assets/missiles/towerDefense_tile203.png" id="5_ljusi"]
-[ext_resource type="Texture2D" uid="uid://detrvxkfjyhgn" path="res://Assets/ship_0014-2.png" id="6_bw0wa"]
+[ext_resource type="Texture2D" uid="uid://detrvxkfjyhgn" path="res://Assets/ship_0014-2.png" id="6_m778i"]
 [ext_resource type="Texture2D" uid="uid://dnnvp8yhqwmvh" path="res://Assets/Shooter/Effects/shield3.png" id="7_0n57e"]
 
 [node name="Player" type="CharacterBody2D"]
@@ -23,8 +23,11 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_ljusi")
 
 [node name="SpaceShipBody" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("6_bw0wa")
+
+z_index = -1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_m778i")
+
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -18, -12, -10, -27, -1, -18, 12, 18, 11, 24, -1, 10, -11)
