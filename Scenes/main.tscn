@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3xclijjut6oc"]
+[gd_scene load_steps=11 format=3 uid="uid://c3xclijjut6oc"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0fctq"]
 [ext_resource type="PackedScene" uid="uid://beiuin8lugews" path="res://Scenes/player.tscn" id="1_kohhl"]
 [ext_resource type="PackedScene" uid="uid://dn06r1wl1lmm" path="res://Scenes/drawing.tscn" id="3_o8voo"]
+[ext_resource type="FontFile" uid="uid://7pagvgi3krt" path="res://Assets/Kenney Future.ttf" id="4_twciv"]
+[ext_resource type="Script" path="res://Scenes/score.gd" id="5_q57nm"]
+[ext_resource type="Script" path="res://Scenes/equipped_weapons.gd" id="5_uvydu"]
+[ext_resource type="Script" path="res://Scenes/health.gd" id="6_6ku00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
 size = Vector2(236, 775)
@@ -76,11 +80,57 @@ autostart = true
 autostart = true
 
 [node name="Drawing" parent="." instance=ExtResource("3_o8voo")]
-position = Vector2(17, 0)
+position = Vector2(9, 0)
 
+[node name="Label" type="Label" parent="."]
+offset_left = 765.0
+offset_top = 105.0
+offset_right = 1173.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("4_twciv")
+theme_override_font_sizes/font_size = 40
+text = "Score: 000000"
+horizontal_alignment = 1
+script = ExtResource("5_q57nm")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 765.0
+offset_top = 204.0
+offset_right = 1173.0
+offset_bottom = 261.0
+theme_override_fonts/font = ExtResource("4_twciv")
+theme_override_font_sizes/font_size = 30
+text = "Weapons Equipped"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 762.0
+offset_top = 26.0
+offset_right = 1170.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("4_twciv")
+theme_override_font_sizes/font_size = 30
+text = "Health: 100"
+horizontal_alignment = 1
+script = ExtResource("6_6ku00")
+
+[node name="Equipped Weapons" type="Label" parent="."]
+offset_left = 765.0
+offset_top = 281.0
+offset_right = 1173.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("4_twciv")
+theme_override_font_sizes/font_size = 30
+text = "None"
+horizontal_alignment = 1
+script = ExtResource("5_uvydu")
+
+[connection signal="update_score" from="." to="Label" method="_on_game_update_score"]
 [connection signal="shoot_missile" from="Player" to="." method="_on_player_shoot_missile"]
 [connection signal="shoot_signal" from="Player" to="." method="_on_player_shoot_signal"]
 [connection signal="timeout" from="Timers/MeteorTimer" to="." method="_on_meteor_timer_timeout"]
 [connection signal="timeout" from="Timers/StarTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="valid_areas" from="Drawing" to="Player" method="on_tool_change"]
+[connection signal="valid_areas" from="Drawing" to="Equipped Weapons" method="_on_drawing_valid_areas"]
+[connection signal="game_over" from="Label3" to="." method="_on_label_3_game_over"]

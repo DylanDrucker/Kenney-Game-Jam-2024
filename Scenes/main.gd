@@ -13,6 +13,9 @@ var big_star_scene: PackedScene = load("res://Scenes/big_star.tscn")
 var explosion_scene : PackedScene = load("res://Scenes/explosion.tscn")
 
 var num_stars = -1
+
+@export var game_over_scene : PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -79,10 +82,19 @@ func _on_collision():
 
 func _on_laser_collision():
 	print("laser collided")
+	
 
+signal update_score
 func on_explosion(pos, velocity, rotation_speed):
 	var explosion = explosion_scene.instantiate()
 	explosion.position = pos
 	explosion.velocity = velocity
 	explosion.rotation_speed = rotation_speed
 	$Explosions.add_child(explosion)
+	
+	update_score.emit()
+	
+
+
+func _on_game_over():
+	get_tree().change_scene_to_packed(game_over_scene)
