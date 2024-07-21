@@ -24,7 +24,6 @@ var width
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	width = get_viewport().get_visible_rect().size[0]
-	
 
 
 
@@ -120,26 +119,77 @@ func _on_game_over():
 
 func _on_master_timer_timeout():
 	#time for player to get acquainted
-	#await get_tree().create_timer(7).timeout
+	await left_right_wave()
+	await get_tree().create_timer(3).timeout
+	await solid_wave()
+	var rng = RandomNumberGenerator.new()
+	while true:
+		var random_scene = rng.randi_range(0,10)
+		match random_scene:
+			0:
+				await solid_wave()
+			1:
+				await small_meteor_shower()
+			2: 
+				await big_meteor_shower()
+			3:
+				await quick_charge_diagonal()
+			4:
+				await square_wave()
+			5: 
+				await left_right_wave()
+		await get_tree().create_timer(4).timeout
 	
+	#quick_charge_diagonal()
 	#one wave of enemies that charge
+	
+	#await get_tree().create_timer(2).timeout
+	#create_meteors(10)
+	
+	"""#one wave of squares
+	"""
+func left_right_wave():
+	for i in range(5):
+		create_enemies(enemy_left_right_scene,10,10,false,4)
+		await get_tree().create_timer(1).timeout
+	
+func left_right_shoot_wave():
+	create_enemies(enemy_left_right_scene,10,10,true,7)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_left_right_scene,10,50,true,7)
+	await get_tree().create_timer(1).timeout
+	
+
+func quick_charge_diagonal():
 	create_enemies(enemy_down_scene,10,10,false,4)
 	await get_tree().create_timer(1).timeout
 	create_enemies(enemy_down_scene,10,30,false,4)
 	await get_tree().create_timer(1).timeout
 	create_enemies(enemy_down_scene,10,50,false,4)
 	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_down_scene,10,70,false,4)
-	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_down_scene,10,90,false,4)
-	#await get_tree().create_timer(2).timeout
-	#create_meteors(10)
 	
-	"""#one wave of squares
-	create_enemies(enemy_square_scene,5,100,true)
+func solid_wave():
+	create_enemies(enemy_down_scene,30,10,false,7)
+	
+func square_wave():
+	create_enemies(enemy_square_scene,5,100,true,10)
 	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_square_scene,5,100,true)
+	create_enemies(enemy_square_scene,5,100,true,10)
 	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_square_scene,5,30,true)
+	create_enemies(enemy_square_scene,5,30,true,10)
 	await get_tree().create_timer(1).timeout	
-	create_enemies(enemy_square_scene,5,30,true)"""
+	create_enemies(enemy_square_scene,5,30,true,10)
+	await get_tree().create_timer(1).timeout
+	
+func small_meteor_shower():
+	$WarningMessage.show_message("METEOR SHOWER")
+	await get_tree().create_timer(3).timeout
+	for i in range(4):
+		create_meteors(5)
+		await get_tree().create_timer(1).timeout
+
+func big_meteor_shower():
+	await $WarningMessage.show_message("METEOR SHOWER")
+	for i in range(5):
+		create_meteors(10)
+		await get_tree().create_timer(1).timeout

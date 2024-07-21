@@ -17,7 +17,7 @@ signal player_hit_ship()
 func _ready():
 	width = get_viewport().get_visible_rect().size[0]
 	starting_pos = position.x
-
+	$LeaveTimer.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += Vector2(horizontal,down_speed) * speed * delta

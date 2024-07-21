@@ -14,6 +14,7 @@ signal player_hit_ship()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	width = get_viewport().get_visible_rect().size[0]
+	$LeaveTimer.start()
 	#position.x = 69
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

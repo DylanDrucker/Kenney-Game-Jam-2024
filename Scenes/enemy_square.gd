@@ -26,7 +26,7 @@ var down_speed = 1
 func _ready():
 	width = get_viewport().get_visible_rect().size[0]
 	starting_pos = position.x
-
+	$LeaveTimer.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2(0,1)
