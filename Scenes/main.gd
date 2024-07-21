@@ -112,6 +112,8 @@ func _on_game_over():
 
 
 func _on_master_timer_timeout():
+	#time for player to get acquainted
+	#await get_tree().create_timer(7).timeout
 	
 	#create_enemies(enemy_down_scene,9,10)
 	#await get_tree().create_timer(2).timeout
@@ -119,6 +121,7 @@ func _on_master_timer_timeout():
 	
 	#await get_tree().create_timer(2).timeout
 	#create_meteors(10)
+	
 	#one wave of squares
 	create_enemies(enemy_square_scene,5,100)
 	await get_tree().create_timer(1).timeout
