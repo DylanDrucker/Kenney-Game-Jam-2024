@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3xclijjut6oc"]
+[gd_scene load_steps=12 format=3 uid="uid://c3xclijjut6oc"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0fctq"]
 [ext_resource type="PackedScene" uid="uid://beiuin8lugews" path="res://Scenes/player.tscn" id="1_kohhl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/score.gd" id="5_q57nm"]
 [ext_resource type="Script" path="res://Scenes/equipped_weapons.gd" id="5_uvydu"]
 [ext_resource type="Script" path="res://Scenes/health.gd" id="6_6ku00"]
+[ext_resource type="Script" path="res://Scenes/Label4.gd" id="7_onuwa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
 size = Vector2(236, 775)
@@ -116,6 +117,17 @@ theme_override_font_sizes/font_size = 30
 text = "Health: 100"
 horizontal_alignment = 1
 script = ExtResource("6_6ku00")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 762.0
+offset_top = 63.0
+offset_right = 1170.0
+offset_bottom = 163.0
+theme_override_fonts/font = ExtResource("4_twciv")
+theme_override_font_sizes/font_size = 30
+text = "Shield: 100"
+horizontal_alignment = 1
+script = ExtResource("7_onuwa")
 
 [node name="Equipped Weapons" type="Label" parent="."]
 offset_left = 765.0
