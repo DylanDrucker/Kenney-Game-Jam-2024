@@ -15,6 +15,8 @@ var enabled = false
 @onready var missile = $TileMap/Missile
 @onready var gun = $TileMap/Gun
 @onready var shield = $TileMap/Shield
+@onready var speed = $TileMap/Speed
+@onready var regen = $TileMap/Regen
 
 var areas = []
 
@@ -22,7 +24,7 @@ var valid_wire = false
 
 func _ready():
 	$TileMap.visible = false
-	areas = [missile, gun, shield]
+	areas = [missile, gun, shield, speed, regen]
 
 signal valid_areas(weapons)
 
@@ -44,6 +46,9 @@ func _input(event):
 	
 	elif Input.is_action_just_released("draw"):
 		print(area_list)
+		if len(area_list) > 0:
+			if area_list[-1] != "END":
+				$Warning.show_warning("Circuit Must connect start to end")
 		new_line = true
 		enabled = false
 		if invalid_wire():
@@ -139,4 +144,6 @@ func _on_mouse_in_area(type):
 		if len(area_list) < 5:
 			valid_wire = true
 			queue_redraw()
+		else:
+			$Warning.show_warning("Can Only connect two weapons at once")
 	update_area_list(type)
