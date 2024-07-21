@@ -2,7 +2,7 @@ extends Area2D
 
 var laser_can_shoot := true
 var speed := 25
-var horizontal := 4
+var horizontal := 0
 var width
 var reload_time = 1
 @export var enemy_lives := 4
@@ -12,7 +12,7 @@ signal explosion(pos)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	width = get_viewport().get_visible_rect().size[0]
-	position.x = 69
+	#position.x = 69
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

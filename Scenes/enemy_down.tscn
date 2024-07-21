@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://co3hvjw6sdq4i"]
+[gd_scene load_steps=3 format=3 uid="uid://boj5qgtu3a4n8"]
 
-[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_qciwq"]
-[ext_resource type="Texture2D" uid="uid://20w3sjsg4rmd" path="res://Assets/Enemies/tile_0000.png" id="2_rkv5j"]
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_1gjuu"]
+[ext_resource type="Texture2D" uid="uid://20w3sjsg4rmd" path="res://Assets/Enemies/tile_0000.png" id="2_u3l0t"]
 
 [node name="Enemy Down" type="Area2D"]
 collision_layer = 16
 collision_mask = 15
-script = ExtResource("1_qciwq")
+script = ExtResource("1_1gjuu")
 
 [node name="body" type="Sprite2D" parent="."]
 light_mask = 16
-texture = ExtResource("2_rkv5j")
+texture = ExtResource("2_u3l0t")
 
 [node name="LaserShoot" type="Marker2D" parent="."]
 position = Vector2(0, 26)

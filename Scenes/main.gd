@@ -13,12 +13,12 @@ var big_star_scene: PackedScene = load("res://Scenes/big_star.tscn")
 var explosion_scene : PackedScene = load("res://Scenes/explosion.tscn")
 
 var num_stars = -1
-
+var width
 @export var game_over_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	width = get_viewport().get_visible_rect().size[0]
 	
 
 
@@ -55,19 +55,22 @@ func _on_timer_timeout():
 	
 
 
-func _on_meteor_timer_timeout():
-	var meteor = meteor_scene.instantiate()
-	$Meteors.add_child(meteor)
-	
-	meteor.connect("collision",_on_collision)
-	meteor.connect("explosion",on_explosion)
+func create_meteors(num):
+	for i in range(num):
+		var meteor = meteor_scene.instantiate()
+		$Meteors.add_child(meteor)
+		
+		meteor.connect("collision",_on_collision)
+		meteor.connect("explosion",on_explosion)
 
-func _on_enemy_timer_timeout():
-	var enemy = enemy_scene.instantiate()
-	$Enemies.add_child(enemy)
-	
-	enemy.connect("shoot_enemy_laser", on_enemy_laser)
-	enemy.connect("explosion",on_explosion)
+func create_enemies(num, offset):
+	var num_enemies = num
+	for i in range(num_enemies):
+		var enemy = enemy_scene.instantiate()
+		$Enemies.add_child(enemy)
+		enemy.position = Vector2((i)*(766/(num_enemies))+offset,-10)
+		enemy.connect("shoot_enemy_laser", on_enemy_laser)
+		enemy.connect("explosion",on_explosion)
 	
 func on_enemy_laser(pos):
 	var laser = laser_scene.instantiate()
@@ -98,3 +101,11 @@ func on_explosion(pos, velocity, rotation_speed):
 
 func _on_game_over():
 	get_tree().change_scene_to_packed(game_over_scene)
+
+
+func _on_master_timer_timeout():
+	create_enemies(9,10)
+	await get_tree().create_timer(2).timeout
+	create_enemies(9,50)
+	await get_tree().create_timer(2).timeout
+	create_meteors(10)
