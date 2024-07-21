@@ -93,15 +93,15 @@ one_shot = true
 one_shot = true
 autostart = true
 
-[node name="Drawing" parent="." instance=ExtResource("3_o8voo")]
-position = Vector2(9, 0)
-
 [node name="Panel" type="Panel" parent="."]
 offset_left = 777.0
 offset_top = -19.0
 offset_right = 1182.0
 offset_bottom = 720.0
 mouse_filter = 2
+
+[node name="Drawing" parent="." instance=ExtResource("3_o8voo")]
+position = Vector2(9, 0)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 765.0
