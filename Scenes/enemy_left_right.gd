@@ -12,6 +12,7 @@ var starting_pos : float = 50
 
 signal shoot_enemy_laser(pos)
 signal explosion(pos)
+signal player_hit_ship()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	width = get_viewport().get_visible_rect().size[0]
@@ -42,15 +43,26 @@ func lose_life():
 	reload_time *= 1.5
 	$ReloadTimer.start(reload_time)
 	if enemy_lives <= 0:
-		emit_signal("explosion",global_position,Vector2(horizontal,1) * speed,0)
+		emit_signal("explosion",global_position,Vector2(horizontal,down_speed) * speed,0)
 		self.queue_free()
 		
 
 func hit_by_meteor():
-	emit_signal("explosion",global_position,Vector2(horizontal,1) * speed,0)
+	emit_signal("explosion",global_position,Vector2(horizontal,down_speed) * speed,0)
 	self.queue_free()
 	return false
 
 
 func _on_leave_timer_timeout():
 	down_speed = 8
+
+func _on_area_entered(area):
+	if area.is_in_group("Missile"):
+		emit_signal("explosion",global_position,Vector2(horizontal,down_speed) * speed,0)
+		area.queue_free()
+		self.queue_free()
+
+func _on_body_entered(body):
+	emit_signal("player_hit_ship")
+	emit_signal("explosion",global_position,Vector2(horizontal,down_speed) * speed,0)
+	self.queue_free()

@@ -65,7 +65,7 @@ func create_meteors(num):
 		meteor.connect("collision",_on_collision)
 		meteor.connect("explosion",on_explosion)
 
-func create_enemies(enemy_type,num, offset):
+func create_enemies(enemy_type,num, offset,shoots,time):
 	var num_enemies = num
 	for i in range(num_enemies):
 		var enemy = enemy_type.instantiate()
@@ -73,8 +73,11 @@ func create_enemies(enemy_type,num, offset):
 		enemy.position = Vector2((i)*(766/(num_enemies))+offset,-10)
 		if enemy_type == enemy_left_right_scene:
 			enemy.starting_pos = enemy.position.x
+		enemy.laser_can_shoot = shoots
+		enemy.get_node("LeaveTimer").start(time)
 		enemy.connect("shoot_enemy_laser", on_enemy_laser)
 		enemy.connect("explosion",on_explosion)
+		enemy.connect("player_hit_ship",player_hit_ship)
 	
 func on_enemy_laser(pos):
 	var laser = laser_scene.instantiate()
@@ -88,7 +91,11 @@ func _on_collision():
 	var health_shield = $Player.take_damage(50)
 	$Label3.adjust_health(health_shield[0])
 	$Label4.adjust_shield(health_shield[1])
-	
+
+func player_hit_ship():
+	var health_shield = $Player.take_damage(25)
+	$Label3.adjust_health(health_shield[0])
+	$Label4.adjust_shield(health_shield[1])
 
 func _on_laser_collision():
 	var health_shield = $Player.take_damage(10)
@@ -116,18 +123,24 @@ func _on_master_timer_timeout():
 	#time for player to get acquainted
 	#await get_tree().create_timer(7).timeout
 	
-	create_enemies(enemy_down_scene,9,10)
-	#await get_tree().create_timer(2).timeout
-	#create_enemies(enemy_left_right_scene,9,50)
-	
+	#one wave of enemies that charge
+	create_enemies(enemy_down_scene,10,10,false,4)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_down_scene,10,30,false,4)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_down_scene,10,50,false,4)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_down_scene,10,70,false,4)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_down_scene,10,90,false,4)
 	#await get_tree().create_timer(2).timeout
 	#create_meteors(10)
 	
 	"""#one wave of squares
-	create_enemies(enemy_square_scene,5,100)
+	create_enemies(enemy_square_scene,5,100,true)
 	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_square_scene,5,100)
+	create_enemies(enemy_square_scene,5,100,true)
 	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_square_scene,5,30)
+	create_enemies(enemy_square_scene,5,30,true)
 	await get_tree().create_timer(1).timeout	
-	create_enemies(enemy_square_scene,5,30)"""
+	create_enemies(enemy_square_scene,5,30,true)"""

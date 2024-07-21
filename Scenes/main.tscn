@@ -89,6 +89,13 @@ autostart = true
 [node name="Drawing" parent="." instance=ExtResource("3_o8voo")]
 position = Vector2(9, 0)
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = 777.0
+offset_top = -19.0
+offset_right = 1182.0
+offset_bottom = 720.0
+mouse_filter = 2
+
 [node name="Label" type="Label" parent="."]
 offset_left = 765.0
 offset_top = 105.0
@@ -142,14 +149,6 @@ theme_override_font_sizes/font_size = 30
 text = "None"
 horizontal_alignment = 1
 script = ExtResource("5_uvydu")
-
-[node name="Panel" type="Panel" parent="."]
-z_index = -3
-offset_left = 777.0
-offset_top = -19.0
-offset_right = 1182.0
-offset_bottom = 720.0
-mouse_filter = 2
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ay3lb")
