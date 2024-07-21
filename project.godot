@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 Main="*res://Scenes/main.gd"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 up={

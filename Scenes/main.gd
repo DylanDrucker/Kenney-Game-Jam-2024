@@ -105,6 +105,7 @@ func on_explosion(pos, velocity, rotation_speed):
 	
 	update_score.emit()
 	
+	
 
 
 func _on_game_over():
