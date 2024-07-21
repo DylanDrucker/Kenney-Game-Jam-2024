@@ -23,11 +23,9 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_ljusi")
 
 [node name="SpaceShipBody" type="Sprite2D" parent="."]
-
 z_index = -1
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_m778i")
-
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -18, -12, -10, -27, -1, -18, 12, 18, 11, 24, -1, 10, -11)
