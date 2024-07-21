@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b21727yw0xvxs" path="res://Assets/Shooter/Lasers/laserGreen10.png" id="1_pjba0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0eeh"]
-radius = 4.0
+radius = 0.5
 height = 28.0
 
 [node name="Laser" type="Area2D"]

@@ -6,6 +6,7 @@ var missile_scene: PackedScene = load("res://Scenes/missile.tscn")
 var meteor_scene: PackedScene = load("res://Scenes/meteor.tscn")
 var enemy_down_scene: PackedScene = load("res://Scenes/enemy_down.tscn")
 var enemy_left_right_scene: PackedScene = load("res://Scenes/enemy_left_right.tscn")
+var enemy_square_scene: PackedScene = load("res://Scenes/enemy_square.tscn")
 
 var small_star_scene: PackedScene = load("res://Scenes/smallstar.tscn")
 var medium_star_scene: PackedScene = load("res://Scenes/medium_star.tscn")
@@ -93,6 +94,7 @@ func _on_laser_collision():
 	var health_shield = $Player.take_damage(10)
 	$Label3.adjust_health(health_shield[0])
 	$Label4.adjust_shield(health_shield[1])
+	
 signal update_score
 func on_explosion(pos, velocity, rotation_speed):
 	var explosion = explosion_scene.instantiate()
@@ -110,8 +112,18 @@ func _on_game_over():
 
 
 func _on_master_timer_timeout():
-	create_enemies(enemy_down_scene,9,10)
-	await get_tree().create_timer(2).timeout
-	create_enemies(enemy_left_right_scene,9,50)
-	await get_tree().create_timer(2).timeout
-	create_meteors(10)
+	
+	#create_enemies(enemy_down_scene,9,10)
+	#await get_tree().create_timer(2).timeout
+	#create_enemies(enemy_left_right_scene,9,50)
+	
+	#await get_tree().create_timer(2).timeout
+	#create_meteors(10)
+	#one wave of squares
+	create_enemies(enemy_square_scene,5,100)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_square_scene,5,100)
+	await get_tree().create_timer(1).timeout
+	create_enemies(enemy_square_scene,5,30)
+	await get_tree().create_timer(1).timeout	
+	create_enemies(enemy_square_scene,5,30)

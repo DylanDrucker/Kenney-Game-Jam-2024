@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxsqfx2p1ru7h"]
+
+[ext_resource type="Script" path="res://Scenes/enemy_square.gd" id="1_f88d0"]
+[ext_resource type="Texture2D" uid="uid://cxtnn6fahq115" path="res://Assets/Enemies/tile_0004.png" id="2_ansn5"]
+
+[node name="Enemy square" type="Area2D"]
+collision_layer = 16
+collision_mask = 15
+script = ExtResource("1_f88d0")
+
+[node name="body" type="Sprite2D" parent="."]
+light_mask = 16
+texture = ExtResource("2_ansn5")
+
+[node name="LaserShoot" type="Marker2D" parent="."]
+position = Vector2(0, 26)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -8, -9, 6, 0, 12, 9, 5, 9, -8)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ChangeDirection" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]
