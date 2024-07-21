@@ -86,12 +86,13 @@ func on_enemy_laser(pos):
 func _on_collision():
 	var health_shield = $Player.take_damage(50)
 	$Label3.adjust_health(health_shield[0])
+	$Label4.adjust_shield(health_shield[1])
 	
 
 func _on_laser_collision():
 	var health_shield = $Player.take_damage(10)
 	$Label3.adjust_health(health_shield[0])
-
+	$Label4.adjust_shield(health_shield[1])
 signal update_score
 func on_explosion(pos, velocity, rotation_speed):
 	var explosion = explosion_scene.instantiate()
