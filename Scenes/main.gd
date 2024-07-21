@@ -143,15 +143,43 @@ func _on_master_timer_timeout():
 				await chaos_wave()
 			7:
 				await combo_square_n_solid_wave()
-				
+			8:
+				await combo_left_right_n_charge_wave()
+			9:
+				await multiple_quick_down()
+			10:
+				await solid_shoot_n_left_n_right_wave()
 		await get_tree().create_timer(10).timeout
 	
 	#quick_charge_diagonal()
 	#one wave of enemies that charge
 	
-	#await get_tree().create_timer(2).timeout
-	#create_meteors(10)
+func solid_shoot_n_left_n_right_wave():
+	create_enemies(enemy_down_scene,20,10,true,2)
+	await get_tree().create_timer(2).timeout
+	create_enemies(enemy_left_right_scene,10,10,true,3)
+	await get_tree().create_timer(3).timeout
+	create_enemies(enemy_down_scene,30,10,false,2)
+	await get_tree().create_timer(2).timeout
 	
+func multiple_quick_down():
+	for i in range(4):
+		create_enemies(enemy_down_scene,20,10,false,2)
+		await get_tree().create_timer(2).timeout
+
+func combo_left_right_n_charge_wave():
+	left_right_wave()
+	await get_tree().create_timer(4).timeout
+	
+	var rng = RandomNumberGenerator.new()
+	match rng.randi_range(0,1):
+		0:
+			await solid_wave()
+			await get_tree().create_timer(5).timeout
+		1:
+			await(quick_charge_diagonal())
+			await get_tree().create_timer(5).timeout
+	left_right_shoot_wave()
 func combo_square_n_solid_wave():
 	await solid_wave()
 	await get_tree().create_timer(5).timeout
@@ -162,15 +190,26 @@ func combo_square_n_solid_wave():
 	
 	
 func chaos_wave():
-	create_enemies(enemy_square_scene,5,100,true,10)
-	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_square_scene,5,100,true,10)
-	await get_tree().create_timer(1).timeout
-	create_enemies(enemy_square_scene,5,30,true,10)
-	await get_tree().create_timer(1).timeout	
-	create_enemies(enemy_square_scene,5,30,true,10)
-	await get_tree().create_timer(1).timeout
 	var rng = RandomNumberGenerator.new()
+	match rng.randi_range(0,8):
+		0:
+			await solid_wave()
+		1:
+			await multiple_quick_down()
+		2:
+			await solid_shoot_n_left_n_right_wave()
+		3:
+			await quick_charge_diagonal()
+		4:
+			await square_wave()
+		5: 
+			await left_right_wave()
+		6:
+			await chaos_wave()
+		7:
+			await combo_square_n_solid_wave()
+		8:
+			await combo_left_right_n_charge_wave()
 	match rng.randi_range(0,1):
 		0:
 			small_meteor_shower()
