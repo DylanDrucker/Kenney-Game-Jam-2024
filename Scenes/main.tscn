@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3xclijjut6oc"]
+[gd_scene load_steps=15 format=3 uid="uid://c3xclijjut6oc"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0fctq"]
 [ext_resource type="PackedScene" uid="uid://beiuin8lugews" path="res://Scenes/player.tscn" id="1_kohhl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/Label4.gd" id="7_onuwa"]
 [ext_resource type="AudioStream" uid="uid://bhylyjang1374" path="res://Audio/8-bit-space-123218.mp3" id="9_ay3lb"]
 [ext_resource type="Script" path="res://Scenes/warning_message.gd" id="10_cx5uc"]
+[ext_resource type="Texture2D" uid="uid://cfyjwxj3d1kv" path="res://Assets/colored-transparent.png" id="11_b5mnx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
 size = Vector2(236, 775)
@@ -168,11 +169,26 @@ script = ExtResource("10_cx5uc")
 
 [node name="Panel" type="Panel" parent="WarningMessage"]
 z_index = -3
+layout_mode = 0
 offset_left = -45.0
 offset_top = -14.0
 offset_right = 769.0
 offset_bottom = 43.0
 mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="WarningMessage"]
+position = Vector2(29, 17)
+scale = Vector2(3.04728, 3.04728)
+texture = ExtResource("11_b5mnx")
+region_enabled = true
+region_rect = Rect2(593.461, 355.991, 19.0875, 17.0087)
+
+[node name="Sprite2D2" type="Sprite2D" parent="WarningMessage"]
+position = Vector2(732, 19)
+scale = Vector2(3.04728, 3.04728)
+texture = ExtResource("11_b5mnx")
+region_enabled = true
+region_rect = Rect2(593.461, 355.991, 19.0875, 17.0087)
 
 [connection signal="update_score" from="." to="Label" method="_on_game_update_score"]
 [connection signal="shoot_missile" from="Player" to="." method="_on_player_shoot_missile"]
