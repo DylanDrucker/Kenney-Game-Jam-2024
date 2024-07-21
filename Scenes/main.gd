@@ -84,11 +84,13 @@ func on_enemy_laser(pos):
 	$Lasers.add_child(laser)
 	
 func _on_collision():
-	print("meteor collided")
+	var health_shield = $Player.take_damage(50)
+	$Label3.adjust_health(health_shield[0])
+	
 
 func _on_laser_collision():
-	print("laser collided")
-	
+	var health_shield = $Player.take_damage(10)
+	$Label3.adjust_health(health_shield[0])
 
 signal update_score
 func on_explosion(pos, velocity, rotation_speed):

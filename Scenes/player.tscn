@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://beiuin8lugews"]
+[gd_scene load_steps=8 format=3 uid="uid://beiuin8lugews"]
 
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_6ymoc"]
 [ext_resource type="Texture2D" uid="uid://da1rwuomwhkhs" path="res://Assets/Shooter/Parts/engine2.png" id="2_n5sam"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c72qrgda32dm6" path="res://Assets/Shooter/Parts/gun09.png" id="4_gfcnt"]
 [ext_resource type="Texture2D" uid="uid://wm1bdxhfxdl" path="res://Assets/missiles/towerDefense_tile203.png" id="5_ljusi"]
 [ext_resource type="Texture2D" uid="uid://ccfxfjwgdymt8" path="res://Assets/Shooter/playerShip1_red.png" id="6_is6b6"]
+[ext_resource type="Texture2D" uid="uid://dnnvp8yhqwmvh" path="res://Assets/Shooter/Effects/shield3.png" id="7_0n57e"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 152
@@ -56,6 +57,10 @@ one_shot = true
 
 [node name="MissilePosition" type="Marker2D" parent="."]
 position = Vector2(0, -44.575)
+
+[node name="Shield" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_0n57e")
 
 [connection signal="timeout" from="LaserTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MissileTimer" to="." method="_on_missile_timer_timeout"]

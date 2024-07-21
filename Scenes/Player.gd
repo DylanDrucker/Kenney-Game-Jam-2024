@@ -8,6 +8,11 @@ var laser_timer: bool = true
 var laser: bool = false
 var missile: bool = false
 var missile_timer: bool = true
+var shield = 100
+var health = 100
+var regen: bool = false
+var shield_on: = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position = Vector2(600,500)
@@ -33,11 +38,30 @@ func _process(delta):
 func on_tool_change(area_list):
 	laser = "GUN" in area_list
 	missile = "MISSILE" in area_list
-	
-	if "SPEED" in area_list:
-		speed = 750
+	regen = "REGEN" in area_list
+	shield_on =  "SHIELD" in area_list
+	if shield_on:
+		$Shield.visible = true
 	else:
+		$Shield.visible = false
+		
+	if "SPEED" in area_list:
 		speed = 500
+	else:
+		speed = 250
+	
+	
+		
+func take_damage(damage):
+	var damage_taken = damage
+	if shield_on:
+		shield -= damage_taken
+		if shield < 0:
+			health += shield
+			shield = 0
+	else:
+		health-= damage_taken
+	return Vector2(health, shield)
 
 
 func _on_timer_timeout():

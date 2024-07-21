@@ -31,6 +31,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	emit_signal("collision")
+	emit_signal("explosion",global_position,Vector2(rand_h_speed,rand_v_speed),rand_rotation_speed)
 	self.queue_free() 
 
 func _on_area_entered(area: Area2D):
