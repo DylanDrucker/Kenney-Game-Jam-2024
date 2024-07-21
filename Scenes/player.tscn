@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1_6ymoc"]
 [ext_resource type="Texture2D" uid="uid://da1rwuomwhkhs" path="res://Assets/Shooter/Parts/engine2.png" id="2_n5sam"]
 [ext_resource type="Texture2D" uid="uid://wm1bdxhfxdl" path="res://Assets/missiles/towerDefense_tile203.png" id="5_ljusi"]
-[ext_resource type="Texture2D" uid="uid://detrvxkfjyhgn" path="res://Assets/ship_0014-2.png" id="6_m778i"]
+[ext_resource type="Texture2D" uid="uid://drynkumxgu6u3" path="res://Assets/ship_0014-2.png" id="6_m778i"]
 [ext_resource type="Texture2D" uid="uid://dnnvp8yhqwmvh" path="res://Assets/Shooter/Effects/shield3.png" id="7_0n57e"]
 
 [node name="Player" type="CharacterBody2D"]
@@ -41,7 +41,6 @@ wait_time = 0.2
 one_shot = true
 
 [node name="MissileTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [node name="MissilePosition" type="Marker2D" parent="."]

@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bhylyjang1374" path="res://Audio/8-bit-space-123218.mp3" id="9_ay3lb"]
 [ext_resource type="Script" path="res://Scenes/warning_message.gd" id="10_cx5uc"]
 [ext_resource type="Texture2D" uid="uid://cfyjwxj3d1kv" path="res://Assets/colored-transparent.png" id="11_b5mnx"]
-[ext_resource type="PackedScene" path="res://planet.tscn" id="12_mxuwp"]
+[ext_resource type="PackedScene" uid="uid://b0grpor131nm8" path="res://planet.tscn" id="12_mxuwp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjnu7"]
 size = Vector2(236, 775)
@@ -27,7 +27,7 @@ script = ExtResource("1_0fctq")
 
 [node name="Planet" parent="." instance=ExtResource("12_mxuwp")]
 z_index = -5
-position = Vector2(389, 851)
+position = Vector2(396, 823)
 scale = Vector2(8.99009, 8.99009)
 
 [node name="BackgroundStars" type="Node2D" parent="."]
@@ -97,6 +97,7 @@ autostart = true
 position = Vector2(9, 0)
 
 [node name="Panel" type="Panel" parent="."]
+z_index = -2
 offset_left = 777.0
 offset_top = -19.0
 offset_right = 1182.0
