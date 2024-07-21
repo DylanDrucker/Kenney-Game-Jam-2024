@@ -5,8 +5,8 @@ extends CharacterBody2D
 signal shoot_signal(pos_left,pos_right)
 signal shoot_missile(pos)
 var laser_timer: bool = true
-var laser: bool = true
-var missile: bool = true
+var laser: bool = false
+var missile: bool = false
 var missile_timer: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +29,15 @@ func _process(delta):
 			emit_signal("shoot_missile",$MissilePosition.global_position)
 			missile_timer = false
 			$MissileTimer.start()
+			
+func on_tool_change(area_list):
+	laser = "GUN" in area_list
+	missile = "MISSILE" in area_list
+	
+	if "SPEED" in area_list:
+		speed = 750
+	else:
+		speed = 500
 
 
 func _on_timer_timeout():

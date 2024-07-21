@@ -68,8 +68,8 @@ func _draw():
 	if valid_wire:
 		color = Color.YELLOW
 		width += 5
-		if len(area_list) > 4:
-			width = 0
+	if len(area_list) > 4:
+		width = 0
 	draw_polyline(positions, color, width)
 		
 func invalid_wire():

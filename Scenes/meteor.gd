@@ -33,7 +33,7 @@ func _on_body_entered(body):
 	emit_signal("collision")
 	self.queue_free() 
 
-func _on_area_entered(area):
+func _on_area_entered(area: Area2D):
 	var should_meteor_die = area.hit_by_meteor()
 	if should_meteor_die:
 		emit_signal("explosion",global_position,Vector2(rand_h_speed,rand_v_speed),rand_rotation_speed)

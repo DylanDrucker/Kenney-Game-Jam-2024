@@ -6,23 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdguo"]
 size = Vector2(207.143, 185.714)
 
-[sub_resource type="Animation" id="Animation_e52hf"]
-resource_name = "scale"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.28, 0.28), Vector2(0.35, 0.35), Vector2(0.28, 0.28)]
-}
-
 [sub_resource type="Animation" id="Animation_nlcg3"]
 length = 0.001
 tracks/0/type = "value"
@@ -50,6 +33,23 @@ tracks/1/keys = {
 "values": [Vector2(429, 238)]
 }
 
+[sub_resource type="Animation" id="Animation_e52hf"]
+resource_name = "scale"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.28, 0.28), Vector2(0.35, 0.35), Vector2(0.28, 0.28)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cblyy"]
 _data = {
 "RESET": SubResource("Animation_nlcg3"),
@@ -66,6 +66,8 @@ scale = Vector2(0.28, 0.28)
 script = ExtResource("2_b1x5f")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3.57141, 0)
